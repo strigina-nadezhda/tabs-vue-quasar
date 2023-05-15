@@ -9,7 +9,7 @@
 
       <q-card-section class="q-pa-lg">
         <q-form @submit="addNewApplication" @reset="clearForm" class="q-ma-0">
-          <div class="row q-col-gutter-md">
+          <div class="row q-col-gutter-x-md q-col-gutter-y-xs">
             <q-input
               outlined
               dense
@@ -59,6 +59,7 @@
               label="Организационно-правовая форма"
               outlined
               dense
+              style="padding-bottom: 20px"
               class="col-xs-12 col-sm-12 col-md-12 col-lg-6"
             />
 

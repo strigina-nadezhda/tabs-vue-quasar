@@ -5,7 +5,7 @@
     </h6>
 
     <q-form @submit="onSubmit" @reset="onReset($route.params.id)" class="form">
-      <div class="row q-col-gutter-md">
+      <div class="row q-col-gutter-x-md q-col-gutter-y-xs">
         <q-input
           outlined
           dense
@@ -55,6 +55,7 @@
           label="Организационно-правовая форма *"
           outlined
           dense
+          style="padding-bottom: 20px"
           class="col-xs-12 col-sm-6 col-md-6"
         />
 
@@ -73,9 +74,11 @@
           v-model="stg"
           multiple
           :options="products"
-          label="Продукт"
+          label="Продукт *"
           outlined
           dense
+          lazy-rules
+          :rules="rules"
           class="col-xs-12 col-sm-6 col-md-6"
         />
 
@@ -90,7 +93,7 @@
           class="col-xs-12 col-sm-6 col-md-6"
         />
       </div>
-      <h6 class="q-ma-none text-bold q-my-md">Дополнительная информация:</h6>
+      <h6 class="q-ma-none text-bold q-mb-md">Дополнительная информация:</h6>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 q-col-gutter-y-md">
           <q-input
