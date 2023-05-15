@@ -270,7 +270,7 @@ export default defineComponent({
   },
   watch: {
     tabForm(e) {
-      // если данные подгрузились в tabForm заменяем их на форме
+      // если данные обновились в tabForm, то обновляются и в форме
       if (e) {
         this.updateForm(e);
       }

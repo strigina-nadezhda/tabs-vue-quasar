@@ -77,9 +77,11 @@
               v-model="stg"
               multiple
               :options="products"
-              label="Продукт"
+              label="Продукт *"
               outlined
               dense
+              lazy-rules
+              :rules="rules"
               class="col-xs-12 col-sm-12 col-md-12 col-lg-6"
             />
 
@@ -159,8 +161,6 @@ import { mapMutations, mapState } from "vuex";
 import { ref } from "vue";
 import { date } from "quasar";
 const { formatDate } = date;
-
-const DateNow = new Date().toLocaleDateString();
 
 export default defineComponent({
   name: "DialogForm",

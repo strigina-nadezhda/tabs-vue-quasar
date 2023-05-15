@@ -41,12 +41,12 @@ const initial_tabs = () => {
     },
   ];
 
-  // Восстановление вкладок из локального хранилища либо создание двух дефолтных и сохранение их в локальном хранилище
-  const current_tabs = JSON.parse(localStorage.getItem("tabs"));
-  if (current_tabs == null || current_tabs?.length < 2) {
+  // Восстановление табов из локального хранилища или создание и сохранение двух дефолтных табов
+  const currentTabs = JSON.parse(localStorage.getItem("tabs"));
+  if (currentTabs == null || currentTabs?.length < 2) {
     localStorage.setItem("tabs", JSON.stringify(defaultTabs));
     return defaultTabs;
   } else {
-    return current_tabs;
+    return currentTabs;
   }
 };

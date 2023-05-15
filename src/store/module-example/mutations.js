@@ -12,10 +12,7 @@ export function saveOrderData(state, payload) {
 
 export function addNewTab(state, newTab) {
   state.tabs.push(newTab);
-  localStorage.setItem(
-    "tabs",
-    JSON.stringify(state.tabs.filter((tab) => tab.temp !== true))
-  );
+  localStorage.setItem("tabs", JSON.stringify(state.tabs));
 }
 
 export function openDialog(state) {
@@ -36,10 +33,7 @@ export function deleteOrder(state, itemIndex) {
 
 export function deleteTab(state, tabIndex) {
   state.tabs.splice(tabIndex, 1);
-  localStorage.setItem(
-    "tabs",
-    JSON.stringify(state.tabs.filter((tab) => tab.temp !== true))
-  );
+  localStorage.setItem("tabs", JSON.stringify(state.tabs));
 }
 
 export function editOrder(state, tab) {

@@ -38,7 +38,7 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { mapGetters, mapState, mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 import DialogForm from "src/components/DialogForm.vue";
 import { useQuasar } from "quasar";
 
@@ -66,10 +66,6 @@ export default defineComponent({
   computed: {
     ...mapState({
       tabs: (state) => state.allTabs.tabs,
-    }),
-    ...mapGetters({
-      tabIndex: "allTabs/tabIndex",
-      itemIndex: "allTabs/itemIndex",
     }),
   },
 

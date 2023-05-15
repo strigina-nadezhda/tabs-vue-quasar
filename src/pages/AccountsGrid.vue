@@ -38,7 +38,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import { mapActions, mapGetters, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import { date } from "quasar";
 import { useQuasar } from "quasar";
 const { formatDate } = date;

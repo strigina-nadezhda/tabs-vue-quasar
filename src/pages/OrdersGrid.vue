@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { ref, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 import { useQuasar } from "quasar";
 
