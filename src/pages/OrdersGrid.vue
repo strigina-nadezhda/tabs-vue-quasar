@@ -74,12 +74,7 @@ const columns = [
     label: "Клиент",
     required: true,
     align: "left",
-    field: (row) =>
-      row.client_name
-        ? row.client_name
-        : row.company_name
-        ? row.company_name
-        : row.extra?.partner?.client_name,
+    field: (row) => (row.client_name ? row.client_name : row.person_fullname),
     format: (val) => `${val}`,
     sortable: true,
   },
@@ -209,7 +204,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    if (this.orders.length < 1) {
+    if (this.orders.length < 2) {
       this.showLoading();
       this.getOrderList().then(() => this.hideLoading());
     }

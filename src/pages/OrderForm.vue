@@ -239,7 +239,6 @@ export default defineComponent({
 
       this.editOrder({ index: index, form: form });
       this.showNotif();
-      console.log("edit tab", form);
     },
     onReset(tabId) {
       this.$emit("close", { id: tabId });

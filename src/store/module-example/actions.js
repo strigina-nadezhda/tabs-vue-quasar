@@ -1,5 +1,5 @@
 import axios from "axios";
-import { tabIndex } from "./getters";
+import { tabIndex, orderIndex } from "./getters";
 
 export async function getOrderList({ commit }) {
   try {
@@ -25,21 +25,23 @@ export async function getAccounts({ commit }) {
   }
 }
 
-export async function getOrderData(
-  { state: { orders }, commit, dispatch },
-  id
-) {
-  const order = orders.find((e) => e.id == id);
-  const isLocallyCreated = order?.is_new ?? false;
+export async function getOrderData({ state, commit, dispatch }, id) {
+  const order = state.orders.find((e) => e.id == id);
+  const isFullOrder = order?.hasOwnProperty("extra");
 
   try {
-    const orderData = isLocallyCreated
-      ? order
-      : await axios
-          .get(`https://my-json-server.typicode.com/plushevy/demo/orders/${id}`)
-          .then((response) => response.data);
+    if (isFullOrder) {
+      commit("saveOrderData", order);
+    } else {
+      const orderData = await axios
+        .get(`https://my-json-server.typicode.com/plushevy/demo/orders/${id}`)
+        .then((response) => response.data);
 
-    commit("saveOrderData", orderData);
+      const index = orderIndex(state)(id);
+      commit("editOrder", { index: index, form: orderData });
+
+      commit("saveOrderData", orderData);
+    }
   } catch (e) {
     console.log(e);
     alert(`Заявление ${id} не найдено`, e);

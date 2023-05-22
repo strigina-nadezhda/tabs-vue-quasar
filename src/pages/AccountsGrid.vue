@@ -137,8 +137,10 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.showLoading();
-    this.getAccounts().then(() => this.hideLoading());
+    if (this.accs.length === 0) {
+      this.showLoading();
+      this.getAccounts().then(() => this.hideLoading());
+    }
   },
 });
 </script>
