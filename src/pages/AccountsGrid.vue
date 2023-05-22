@@ -40,7 +40,6 @@
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import { date } from "quasar";
-import { useQuasar } from "quasar";
 const { formatDate } = date;
 
 const columns = [
@@ -101,20 +100,11 @@ export default defineComponent({
   name: "AccountsGrid",
 
   setup() {
-    const $q = useQuasar();
     return {
       columns,
 
       initialPagination: {
         rowsPerPage: 10,
-      },
-      showLoading() {
-        $q.loading.show({
-          message: "Загрузка...",
-        });
-      },
-      hideLoading() {
-        $q.loading.hide();
       },
     };
   },
@@ -137,10 +127,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    if (this.accs.length === 0) {
-      this.showLoading();
-      this.getAccounts().then(() => this.hideLoading());
-    }
+    this.getAccounts();
   },
 });
 </script>

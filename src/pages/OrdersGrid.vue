@@ -66,7 +66,6 @@
 <script>
 import { defineComponent } from "vue";
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
-import { useQuasar } from "quasar";
 
 const columns = [
   {
@@ -127,21 +126,12 @@ export default defineComponent({
   name: "OrdersGrid",
 
   setup() {
-    const $q = useQuasar();
     return {
       columns,
       dialogForm: true,
 
       initialPagination: {
         rowsPerPage: 10,
-      },
-      showLoading() {
-        $q.loading.show({
-          message: "Загрузка...",
-        });
-      },
-      hideLoading() {
-        $q.loading.hide();
       },
     };
   },
@@ -204,10 +194,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    if (this.orders.length < 2) {
-      this.showLoading();
-      this.getOrderList().then(() => this.hideLoading());
-    }
+    this.getOrderList();
   },
 });
 </script>

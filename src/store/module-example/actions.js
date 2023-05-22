@@ -1,24 +1,28 @@
 import axios from "axios";
 import { tabIndex, orderIndex } from "./getters";
 
-export async function getOrderList({ commit }) {
+export async function getOrderList({ state, commit }) {
   try {
-    const response = await axios.get(
-      "https://my-json-server.typicode.com/plushevy/demo/list"
-    );
-    commit("saveOrderListResponse", response.data);
+    if (state.orders.length < 2) {
+      const response = await axios.get(
+        "https://my-json-server.typicode.com/plushevy/demo/list"
+      );
+      commit("saveOrderListResponse", response.data);
+    }
   } catch (e) {
     alert("Ошибка", e);
     console.log(e);
   }
 }
 
-export async function getAccounts({ commit }) {
+export async function getAccounts({ state, commit }) {
   try {
-    const response = await axios.get(
-      "https://my-json-server.typicode.com/plushevy/demo/meetings"
-    );
-    commit("saveAccountsResponse", response.data);
+    if (state.accounts.length === 0) {
+      const response = await axios.get(
+        "https://my-json-server.typicode.com/plushevy/demo/meetings"
+      );
+      commit("saveAccountsResponse", response.data);
+    }
   } catch (e) {
     alert("Ошибка", e);
     console.log(e);

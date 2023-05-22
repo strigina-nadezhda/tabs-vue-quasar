@@ -154,14 +154,12 @@ import { defineComponent } from "vue";
 import { mapMutations, mapState, mapGetters, mapActions } from "vuex";
 import { ref } from "vue";
 import { date } from "quasar";
-import { useQuasar } from "quasar";
 const { formatDate } = date;
 
 export default defineComponent({
   name: "OrderForm",
 
   setup() {
-    const $q = useQuasar();
     return {
       num: ref(null),
       id: ref(null),
@@ -189,14 +187,6 @@ export default defineComponent({
           color: "primary",
           type: "positive",
         });
-      },
-      showLoading() {
-        $q.loading.show({
-          message: "Загрузка...",
-        });
-      },
-      hideLoading() {
-        $q.loading.hide();
       },
     };
   },
@@ -295,8 +285,7 @@ export default defineComponent({
   },
 
   mounted() {
-    this.showLoading();
-    this.getOrderData(this.tabId).then(() => this.hideLoading());
+    this.getOrderData(this.tabId);
   },
 });
 </script>
